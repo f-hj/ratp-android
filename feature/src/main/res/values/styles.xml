@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MyTheme.ActionBarStyle" parent="@android:style/Widget.ActionBar">
+        <item name="android:titleTextStyle">@style/MyTheme.ActionBar.TitleTextStyle</item>
+    </style>
+
+    <style name="MyTheme.ActionBar.TitleTextStyle" parent="@android:style/TextAppearance.Material.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+
+
+
+    <style name="ratp_acacia" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/MyTheme.ActionBarStyle</item>
+        <item name="colorPrimary">@color/ratp_acacia</item>
+        <item name="colorPrimaryDark">@color/ratp_acacia</item>
+    </style>
+
+    <style name="ratp_vert" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/ratp_vert</item>
+        <item name="colorPrimaryDark">@color/ratp_vert</item>
+    </style>
+
+    <style name="ratp_azur" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/ratp_azur</item>
+        <item name="colorPrimaryDark">@color/ratp_azur</item>
+    </style>
+</resources>

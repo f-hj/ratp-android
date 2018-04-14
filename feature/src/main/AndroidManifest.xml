@@ -25,6 +25,42 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".LineActivity"
+            android:parentActivityName=".MainActivity">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="rapt.fruitice.fr"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".StationActivity"
+            android:label="test"
+            android:parentActivityName=".LineActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="fr.fruitice.rapt.feature.LineActivity" />
+
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="rapt.fruitice.fr"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
