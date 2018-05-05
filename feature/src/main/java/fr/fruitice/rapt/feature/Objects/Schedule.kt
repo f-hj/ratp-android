@@ -1,4 +1,4 @@
 package fr.fruitice.rapt.feature.Objects
 
-class Schedule(val message: String, val destination: String) {
+class Schedule(val stationsMessages: Array<String>, val stationDates: Array<String>) {
 }

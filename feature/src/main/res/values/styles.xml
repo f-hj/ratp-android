@@ -11,19 +11,117 @@
 
 
 
-    <style name="ratp_acacia" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:actionBarStyle">@style/MyTheme.ActionBarStyle</item>
-        <item name="colorPrimary">@color/ratp_acacia</item>
-        <item name="colorPrimaryDark">@color/ratp_acacia</item>
-    </style>
-
-    <style name="ratp_vert" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="ratp_vert" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/ratp_vert</item>
-        <item name="colorPrimaryDark">@color/ratp_vert</item>
+        <item name="colorPrimaryDark">@color/ratp_vertDark</item>
+        <item name="myToolbarStyle">@style/ThemeOverlay.AppCompat.Dark</item>
     </style>
 
-    <style name="ratp_azur" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="ratp_boutonor" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/ratp_boutonOr</item>
+        <item name="colorPrimaryDark">@color/ratp_boutonOrDark</item>
+        <item name="myToolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+
+    <style name="ratp_acacia" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/ratp_acacia</item>
+        <item name="colorPrimaryDark">@color/ratp_acaciaDark</item>
+        <item name="myToolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+
+    <style name="ratp_azur" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/ratp_azur</item>
-        <item name="colorPrimaryDark">@color/ratp_azur</item>
+        <item name="colorPrimaryDark">@color/ratp_azurDark</item>
+        <item name="myToolbarStyle">@style/ThemeOverlay.AppCompat.Dark</item>
+    </style>
+
+    <style name="ratp_iris" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/ratp_iris</item>
+        <item name="colorPrimaryDark">@color/ratp_irisDark</item>
+        <item name="myToolbarStyle">@style/ThemeOverlay.AppCompat.Dark</item>
+    </style>
+
+    <style name="ratp_cobalt" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/ratp_cobalt</item>
+        <item name="colorPrimaryDark">@color/ratp_cobaltDark</item>
+        <item name="myToolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+
+    <style name="ratp_coquelicot" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/ratp_coquelicot</item>
+        <item name="colorPrimaryDark">@color/ratp_coquelicotDark</item>
+        <item name="myToolbarStyle">@style/ThemeOverlay.AppCompat.Dark</item>
+    </style>
+
+    <style name="ratp_fuchsia" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/ratp_fuchsia</item>
+        <item name="colorPrimaryDark">@color/ratp_fuchsiaDark</item>
+        <item name="myToolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+
+    <style name="ratp_lilas" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/ratp_lilas</item>
+        <item name="colorPrimaryDark">@color/ratp_lilasDark</item>
+        <item name="myToolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+
+    <style name="ratp_olive" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/ratp_olive</item>
+        <item name="colorPrimaryDark">@color/ratp_oliveDark</item>
+        <item name="myToolbarStyle">@style/ThemeOverlay.AppCompat.Dark</item>
+    </style>
+
+    <style name="ratp_orange" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/ratp_orange</item>
+        <item name="colorPrimaryDark">@color/ratp_orangeDark</item>
+        <item name="myToolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+
+    <style name="ratp_parme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/ratp_parme</item>
+        <item name="colorPrimaryDark">@color/ratp_parmeDark</item>
+        <item name="myToolbarStyle">@style/ThemeOverlay.AppCompat.Dark</item>
+    </style>
+
+    <style name="ratp_pervenche" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/ratp_pervenche</item>
+        <item name="colorPrimaryDark">@color/ratp_pervencheDark</item>
+        <item name="myToolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+
+    <style name="ratp_rose" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/ratp_rose</item>
+        <item name="colorPrimaryDark">@color/ratp_roseDark</item>
+        <item name="myToolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+
+    <style name="ratp_sapin" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/ratp_sapin</item>
+        <item name="colorPrimaryDark">@color/ratp_sapinDark</item>
+        <item name="myToolbarStyle">@style/ThemeOverlay.AppCompat.Dark</item>
+    </style>
+
+    <style name="ratp_menthe" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/ratp_menthe</item>
+        <item name="colorPrimaryDark">@color/ratp_mentheDark</item>
+        <item name="myToolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+
+    <style name="ratp_ocre" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/ratp_ocre</item>
+        <item name="colorPrimaryDark">@color/ratp_ocreDark</item>
+        <item name="myToolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+
+    <style name="ratp_marron" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/ratp_marron</item>
+        <item name="colorPrimaryDark">@color/ratp_marronDark</item>
+        <item name="myToolbarStyle">@style/ThemeOverlay.AppCompat.Dark</item>
+    </style>
+
+    <style name="ratp_prairie" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/ratp_prairie</item>
+        <item name="colorPrimaryDark">@color/ratp_prairieDark</item>
+        <item name="myToolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
     </style>
 </resources>

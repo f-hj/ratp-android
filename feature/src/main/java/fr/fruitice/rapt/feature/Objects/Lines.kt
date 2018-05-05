@@ -1,6 +1,8 @@
 package fr.fruitice.rapt.feature.Objects
 
 import android.util.Log
+import com.github.kittinunf.fuel.core.ResponseDeserializable
+import com.google.gson.Gson
 
 data class Lines(val metros: Array<Line>, val rers: Array<Line>, val tramways: Array<Line>, val bus: Array<Line>, val noctiliens: Array<Line>) {
 
@@ -8,8 +10,8 @@ data class Lines(val metros: Array<Line>, val rers: Array<Line>, val tramways: A
         METROS("metros"),
         RERS("rers"),
         TRAMWAYS("tramways"),
-        BUS("bus"),
-        NOCTILIENS("noctiliens")
+        //BUS("bus"),
+        //NOCTILIENS("noctiliens")
     }
 
     fun getItem(position: Int): Line? {
@@ -23,7 +25,7 @@ data class Lines(val metros: Array<Line>, val rers: Array<Line>, val tramways: A
 
     fun getType(position: Int): Type? {
         return when {
-            position >= getLastPos(Type.TRAMWAYS) -> Type.BUS
+            //position >= getLastPos(Type.TRAMWAYS) -> Type.BUS
             position >= getLastPos(Type.RERS) -> Type.TRAMWAYS
             position >= getLastPos(Type.METROS) -> Type.RERS
             else -> Type.METROS
@@ -35,12 +37,17 @@ data class Lines(val metros: Array<Line>, val rers: Array<Line>, val tramways: A
             Type.METROS -> metros.size
             Type.RERS -> getLastPos(Type.METROS) + rers.size
             Type.TRAMWAYS -> getLastPos(Type.RERS) + tramways.size
-            Type.BUS -> getLastPos(Type.TRAMWAYS) + bus.size
-            Type.NOCTILIENS -> getLastPos(Type.BUS) + noctiliens.size
+            //Type.BUS -> getLastPos(Type.TRAMWAYS) + bus.size
+            //Type.NOCTILIENS -> getLastPos(Type.BUS) + noctiliens.size
         }
     }
 
     fun getSize(): Int {
-        return getLastPos(Type.BUS)
+        //return getLastPos(Type.BUS)
+        return getLastPos(Type.TRAMWAYS)
+    }
+
+    class Deserializer : ResponseDeserializable<Lines> {
+        override fun deserialize(content: String) = Gson().fromJson(content, Lines::class.java)
     }
 }

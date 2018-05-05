@@ -6,19 +6,11 @@ import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.util.Log
-import android.view.ViewGroup
-import com.github.kittinunf.fuel.android.extension.responseJson
-import com.github.kittinunf.fuel.core.Request
-import com.github.kittinunf.fuel.core.ResponseDeserializable
 import com.github.kittinunf.fuel.httpGet
-import com.google.gson.Gson
 import fr.fruitice.rapt.feature.Adapters.LinesAdapter
 import fr.fruitice.rapt.feature.Objects.Line
 import fr.fruitice.rapt.feature.Objects.Lines
-import fr.fruitice.rapt.feature.Objects.LinesResult
-import kotlinx.android.synthetic.main.activity_line.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), LinesAdapter.OnItemClickListener {
@@ -28,8 +20,8 @@ class MainActivity : AppCompatActivity(), LinesAdapter.OnItemClickListener {
         val intent = Intent(this, LineActivity::class.java)
         intent.putExtra("lineId", line?.id)
         intent.putExtra("lineType", type?.type)
-        intent.putExtra("lineCode", line?.code)
-        intent.putExtra("lineName", line?.name)
+        intent.putExtra("lineCode", line?.getComputedCode())
+        intent.putExtra("lineName", line?.getComputedName())
         startActivity(intent)
     }
 
@@ -59,7 +51,7 @@ class MainActivity : AppCompatActivity(), LinesAdapter.OnItemClickListener {
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
-        "https://api-ratp.pierre-grimaud.fr/v3/lines".httpGet().responseObject(LinesResult.Deserializer()) {_, _, result ->
+        "https://rapt-api.kiwi.fruitice.fr/prettyLines".httpGet().responseObject(Lines.Deserializer()) {_, _, result ->
             Log.d("res", "getted")
             Log.d("res", result.toString())
 
@@ -74,7 +66,7 @@ class MainActivity : AppCompatActivity(), LinesAdapter.OnItemClickListener {
             lines_recycler.layoutManager = LinearLayoutManager(this)
 
             // Access the RecyclerView Adapter and load the data into it
-            mAdapter = LinesAdapter(res?.result!!, this)
+            mAdapter = LinesAdapter(res!!, this)
             mAdapter!!.onItemClickListener = this
 
             lines_recycler.adapter = mAdapter

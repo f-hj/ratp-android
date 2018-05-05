@@ -31,7 +31,7 @@ class LinesAdapter(val lines : Lines, val context: Context) : SectionedRecyclerV
         if (position == (lines.getLastPos(Lines.Type.METROS) - 1)) return true // then rer
         if (position == (lines.getLastPos(Lines.Type.RERS) - 1)) return true // then rer
         if (position == (lines.getLastPos(Lines.Type.TRAMWAYS) - 1)) return true // then rer
-        if (position == (lines.getLastPos(Lines.Type.BUS) - 1)) return true // then rer
+        //if (position == (lines.getLastPos(Lines.Type.BUS) - 1)) return true // then rer
         return false
     }
 
@@ -68,8 +68,8 @@ class LinesAdapter(val lines : Lines, val context: Context) : SectionedRecyclerV
     override fun onBindItemViewHolder(holder: ItemViewHolder?, itemPosition: Int) {
         //Setup item view
         val line = lines.getItem(itemPosition)
-        holder!!.tvLineName.text = line?.name
-        holder!!.tvLineDest.text = line?.directions
+        holder!!.tvLineName.text = line?.getComputedName()
+        holder!!.tvLineDest.text = line?.name
 
         holder.itemView.setOnClickListener { v -> onItemClickListener?.onItemClicked(lines.getType(itemPosition), line) }
     }

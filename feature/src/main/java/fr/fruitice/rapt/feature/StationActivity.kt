@@ -9,29 +9,45 @@ import com.github.kittinunf.fuel.httpGet
 import fr.fruitice.rapt.feature.Objects.Lines
 import fr.fruitice.rapt.feature.Objects.Schedule
 import fr.fruitice.rapt.feature.Objects.Schedules
-import fr.fruitice.rapt.feature.Objects.SchedulesResult
 import fr.fruitice.rapt.feature.R.layout.activity_station
 import kotlinx.android.synthetic.main.activity_line.*
 import kotlinx.android.synthetic.main.activity_station.*
 import kotlinx.android.synthetic.main.content_station.*
 import java.util.*
 import android.os.AsyncTask.execute
-
+import fr.fruitice.rapt.feature.Config.Favorite
+import fr.fruitice.rapt.feature.Objects.Line
 
 
 class StationActivity : AppCompatActivity() {
 
     var lineType: String? = null
     var lineCode: String? = null
+    var lineId: String? = null
+    var way: String? = null
     var stationSlug: String? = null
+    var stationId: String? = null
+    var stationAreaId: String? = null
 
-    var done: Int = 0
+    var done: Boolean = false
+
+    var interval: Timer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        lineCode = intent.getStringExtra("lineCode")
+
+        val line: Line = Line()
+        val styleId = line.getStyleId(lineCode!!)
+        setTheme(styleId)
+
         setContentView(R.layout.activity_station)
         setSupportActionBar(toolbar)
         fab.setOnClickListener { view ->
+            val fav = Favorite(this.lineType!!, this.lineCode!!, this.way!!, this.stationSlug!!)
+            fav.save()
+
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
@@ -39,71 +55,70 @@ class StationActivity : AppCompatActivity() {
 
         Log.d("title", intent.getStringExtra("stationName"))
 
-        toolbar_layout.title = intent.getStringExtra("stationName")
-        toolbar_layout.subtitle = intent.getStringExtra("lineName")
-
         lineType = intent.getStringExtra("lineType")
-        lineCode = intent.getStringExtra("lineCode")
-        stationSlug = intent.getStringExtra("stationSlug")
+        lineId = intent.getStringExtra("lineId")
+        way = intent.getStringExtra("way")
+        stationId = intent.getStringExtra("stationId")
+        stationAreaId = intent.getStringExtra("stationAreaId")
+
+        toolbar_layout.title = intent.getStringExtra("stationName")
+        toolbar_layout.subtitle = intent.getStringExtra("lineName") + " → " + intent.getStringExtra("wayName")
 
         srl_station.setOnRefreshListener { -> refresh() }
 
-        Timer().scheduleAtFixedRate(object : TimerTask() {
+        refresh()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        interval = Timer()
+        interval!!.scheduleAtFixedRate(object : TimerTask() {
             override fun run() {
-                runOnUiThread { refresh() }
+                runOnUiThread {
+                    if (done) refresh()
+                }
             }
-        }, 0, 4000)
+        }, 4000, 4000)
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        interval?.cancel()
     }
 
     private fun refresh() {
-        done = 0
+        done = false
         srl_station.isRefreshing = true
 
-        "https://api-ratp.pierre-grimaud.fr/v3/schedules/$lineType/$lineCode/$stationSlug/A".httpGet().responseObject(SchedulesResult.Deserializer()) { _, _, result ->
+        Log.d("req", "https://rapt-api.kiwi.fruitice.fr/lines/$lineCode/stations/$stationId/$way/next")
+        "https://rapt-api.kiwi.fruitice.fr/lines/$lineCode/stations/$stationId/$way/next".httpGet().responseObject(Schedules.Deserializer()) { _, _, result ->
             val (res, err) = result
             if (err != null) {
                 Snackbar.make(activity_station, err.response.responseMessage, Snackbar.LENGTH_LONG).show()
                 return@responseObject
             }
-            showResults("A", res?.result?.schedules!!)
-        }
-
-        "https://api-ratp.pierre-grimaud.fr/v3/schedules/$lineType/$lineCode/$stationSlug/R".httpGet().responseObject(SchedulesResult.Deserializer()) { _, _, result ->
-            val (res, err) = result
-            if (err != null) {
-                Snackbar.make(activity_station, err.response.responseMessage, Snackbar.LENGTH_LONG).show()
-                return@responseObject
+            var text: String = ""
+            res?.missions?.forEach { schedule: Schedule ->
+                schedule.stationsMessages.forEach {
+                    text += it
+                }
+                text += "\n"
             }
-            showResults("R", res?.result?.schedules!!)
-        }
-    }
 
-    private fun showResults(way: String, schedules: Array<Schedule>) {
-        done++
+            res?.perturbations?.forEach {
+                text += "${it.level}: ${it.message?.text}\n\n"
+            }
 
-        if (done == 2) {
+            way_a_schedule.text = text
+
             srl_station.isRefreshing = false
+            done = true
         }
 
-        if (lineType != "rers") {
-            when (way) {
-                "A" -> way_a.text = schedules.get(0).destination
-                "R" -> way_b.text = schedules.get(0).destination
-            }
-        }
-        var text: String = ""
-        schedules.forEach { schedule: Schedule ->
-            if (lineType == "rers") {
-                text += schedule.message + " (" + schedule.destination + ")\n"
-            } else {
-                text += schedule.message + "\n"
-            }
-        }
-        when (way) {
-            "A" -> way_a_schedule.text = text
-            "R" -> way_b_schedule.text = text
-        }
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {

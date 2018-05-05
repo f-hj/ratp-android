@@ -17,35 +17,12 @@
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin">
         <TextView
-            android:id="@+id/way_a"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="?attr/colorPrimary"
-            android:textSize="14sp"
-            android:text="NO WAY A" />
-        <TextView
             android:id="@+id/way_a_schedule"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/way_a"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:text="no data" />
-        <TextView
-            android:id="@+id/way_b"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/way_a_schedule"
-            android:textColor="?attr/colorPrimary"
-            android:textSize="14sp"
-            android:text="NO WAY B" />
-        <TextView
-            android:id="@+id/way_b_schedule"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/way_b"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:text="no data" />
     </RelativeLayout>
 

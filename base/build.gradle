@@ -1,4 +1,9 @@
 apply plugin: 'com.android.feature'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+def dbflow_version = "4.2.4"
 
 android {
     compileSdkVersion 27
@@ -15,6 +20,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -28,4 +36,20 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.2'
     compile 'com.github.zhukic:sectioned-recyclerview:1.1.0'
     api 'com.hendraanggrian:collapsingtoolbarlayout-subtitle:27.1.0'
+
+
+    // DBFlow
+    kapt "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
+
+    compile "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
+    compile "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
+
+    // kotlin extensions
+    compile "com.github.Raizlabs.DBFlow:dbflow-kotlinextensions:${dbflow_version}"
+
+    // RXJava 2 support
+    compile "com.github.Raizlabs.DBFlow:dbflow-rx2:${dbflow_version}"
+
+    // RXJava 2 Kotlin Extensions Support
+    compile "com.github.Raizlabs.DBFlow:dbflow-rx2-kotlinextensions:${dbflow_version}"
 }

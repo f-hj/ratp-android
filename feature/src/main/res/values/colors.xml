@@ -4,6 +4,59 @@
     <color name="white">#ffffff</color>
 
     <color name="ratp_vert">#00C4B3</color>
-    <color name="ratp_acacia">#B6BD00</color>
-    <color name="ratp_azur">#003CA6</color>
+    <color name="ratp_vertDark">#009384</color>
+
+    <color name="ratp_boutonOr">#FFCD00</color>
+    <color name="ratp_boutonOrDark">#c79d00</color>
+
+    <color name="ratp_acacia">#b6bd00</color>
+    <color name="ratp_acaciaDark">#828d00</color>
+
+    <color name="ratp_azur">#003ca6</color>
+    <color name="ratp_azurDark">#001876</color>
+
+    <color name="ratp_iris">#62259D</color>
+    <color name="ratp_irisDark">#30006e</color>
+
+    <color name="ratp_cobalt">#7BA3DC</color>
+    <color name="ratp_cobaltDark">#4975aa</color>
+
+    <color name="ratp_coquelicot">#E2231A</color>
+    <color name="ratp_coquelicotDark">#a70000</color>
+
+    <color name="ratp_fuchsia">#E37ED1</color>
+    <color name="ratp_fuchsiaDark">#af4ea0</color>
+
+    <color name="ratp_lilas">#E19BDF</color>
+    <color name="ratp_lilasDark">#ae6cad</color>
+
+    <color name="ratp_olive">#837902</color>
+    <color name="ratp_oliveDark">#534d00</color>
+
+    <color name="ratp_orange">#FF7E2E</color>
+    <color name="ratp_orangeDark">#c54f00</color>
+
+    <color name="ratp_parme">#CF009E</color>
+    <color name="ratp_parmeDark">#99006f</color>
+
+    <color name="ratp_pervenche">#6EC4E8</color>
+    <color name="ratp_pervencheDark">#3593b6</color>
+
+    <color name="ratp_rose">#FA9ABA</color>
+    <color name="ratp_roseDark">#c56a8a</color>
+
+    <color name="ratp_sapin">#007852</color>
+    <color name="ratp_sapinDark">#004b29</color>
+
+    <color name="ratp_menthe">#6ECA97</color>
+    <color name="ratp_mentheDark">#3b9969</color>
+
+    <color name="ratp_ocre">#C9910D</color>
+    <color name="ratp_ocreDark">#936400</color>
+
+    <color name="ratp_marron">#704B1C</color>
+    <color name="ratp_marronDark">#422300</color>
+
+    <color name="ratp_prairie">#00ae41</color>
+    <color name="ratp_prairieDark">#007d0f</color>
 </resources>
