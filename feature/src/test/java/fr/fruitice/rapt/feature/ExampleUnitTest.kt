@@ -1,4 +1,4 @@
-package fr.fruitice.rapt.feature
+package fr.fruitice.trome.feature
 
 import org.junit.Test
 

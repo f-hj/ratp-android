@@ -1,4 +1,4 @@
-package fr.fruitice.rapt.feature
+package fr.fruitice.trome.feature
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("fr.fruitice.rapt.feature.test", appContext.packageName)
+        assertEquals("fr.fruitice.trome.feature.test", appContext.packageName)
     }
 }

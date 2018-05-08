@@ -1,30 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="fr.fruitice.rapt.feature">
+    package="fr.fruitice.trome.feature">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".App">
+        android:name=".App"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:allowBackup="true">
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
-            <intent-filter android:order="1">
+            <intent-filter android:order="1" android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="fruitice.fr"
+                    android:host="trome.fruitice.fr"
                     android:pathPattern="/.*"
                     android:scheme="https" />
+                <data
+                    android:host="trome.fruitice.fr"
+                    android:pathPattern="/.*"
+                    android:scheme="http" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <meta-data
+                android:name="default-url"
+                android:value="https://trome.fruitice.fr/" />
         </activity>
         <activity
             android:name=".LineActivity"
@@ -37,9 +46,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="rapt.fruitice.fr"
-                    android:pathPattern="/.*"
+                    android:host="trome.fruitice.fr"
+                    android:pathPattern="/line/.*"
                     android:scheme="https" />
+                <data
+                    android:host="trome.fruitice.fr"
+                    android:pathPattern="/.*"
+                    android:scheme="http" />
             </intent-filter>
         </activity>
         <activity
@@ -49,7 +62,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="fr.fruitice.rapt.feature.LineActivity" />
+                android:value="fr.fruitice.trome.feature.LineActivity" />
 
             <intent-filter android:order="1">
                 <action android:name="android.intent.action.VIEW" />
@@ -58,9 +71,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="rapt.fruitice.fr"
-                    android:pathPattern="/.*"
+                    android:host="trome.fruitice.fr"
+                    android:pathPattern="/line/.*/station/.*"
                     android:scheme="https" />
+                <data
+                    android:host="trome.fruitice.fr"
+                    android:pathPattern="/.*"
+                    android:scheme="http" />
             </intent-filter>
         </activity>
     </application>
