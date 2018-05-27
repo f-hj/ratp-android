@@ -1,6 +1,5 @@
-package fr.fruitice.trome.feature.Objects
+package fr.fruitice.trome.feature.Objects.ratp
 
-import android.util.Log
 import com.github.kittinunf.fuel.core.ResponseDeserializable
 import com.google.gson.Gson
 

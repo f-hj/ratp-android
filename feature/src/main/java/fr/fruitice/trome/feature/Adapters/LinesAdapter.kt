@@ -1,18 +1,15 @@
 package fr.fruitice.trome.feature.Adapters
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.zhukic.sectionedrecyclerview.SectionedRecyclerViewAdapter
-import fr.fruitice.trome.feature.Objects.Line
+import fr.fruitice.trome.feature.Objects.ratp.Line
 import fr.fruitice.trome.feature.R
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.lines_recycler_item.view.*
-import fr.fruitice.trome.feature.Objects.Lines
+import fr.fruitice.trome.feature.Objects.ratp.Lines
 import kotlinx.android.synthetic.main.lines_recycler_header.view.*
 import android.support.v4.content.ContextCompat
 

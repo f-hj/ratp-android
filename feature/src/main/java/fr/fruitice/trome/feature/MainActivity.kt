@@ -1,22 +1,14 @@
 package fr.fruitice.trome.feature
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
-import com.github.kittinunf.fuel.httpGet
-import fr.fruitice.trome.feature.Adapters.LinesAdapter
-import fr.fruitice.trome.feature.Objects.Line
-import fr.fruitice.trome.feature.Objects.Lines
 import kotlinx.android.synthetic.main.activity_main.*
-import android.R.anim.slide_out_right
-import android.R.anim.slide_in_left
-import android.annotation.SuppressLint
 import android.app.Fragment
 import android.app.FragmentTransaction
+import android.content.Intent
+import android.view.Menu
+import android.view.MenuItem
 
 
 class MainActivity : AppCompatActivity() {
@@ -62,5 +54,21 @@ class MainActivity : AppCompatActivity() {
 
         // Start the animated transition.
         ft.commit()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.action_credits -> {
+                val intent = Intent(this, CreditsActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+        }
+        return false
     }
 }

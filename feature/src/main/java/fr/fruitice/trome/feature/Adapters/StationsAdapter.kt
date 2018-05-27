@@ -4,8 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import fr.fruitice.trome.feature.Objects.Station
-import fr.fruitice.trome.feature.Objects.Stations
+import fr.fruitice.trome.feature.Objects.ratp.Station
 import fr.fruitice.trome.feature.R
 import kotlinx.android.synthetic.main.stations_recycler_item.view.*
 

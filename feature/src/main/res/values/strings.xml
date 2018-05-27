@@ -3,6 +3,17 @@
     <string name="title_lines">Lines</string>
     <string name="title_itinerary">Itinerary</string>
     <string name="title_favorites">Favorites</string>
-    <string name="title_activity_station">StationActivity</string>
+    <string name="title_activity_station">Station</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_search">Search</string>
+    <string name="title_activity_credits">Credits</string>
+    <string name="credits_text">
+        "Data:\n"
+        "    ODbL 1.0 https://data.ratp.fr/ (RT + GTFS)\n\n"
+
+        "Wrapper:\n"
+        "    undefined http://www.opentripplanner.org/ (GTFS)\n"
+        "    MIT https://github.com/f-hj/ratp-go (RT/JSON API)\n\n"
+
+    </string>
 </resources>

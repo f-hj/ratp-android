@@ -7,8 +7,16 @@
     <style name="MyTheme.ActionBar.TitleTextStyle" parent="@android:style/TextAppearance.Material.Widget.ActionBar.Title">
         <item name="android:textColor">@color/black</item>
     </style>
+    
+    <style name="MyTheme.FullWhite" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorPrimaryDark">#c7c7c7</item>
+        <item name="android:colorPrimary">#fafafa</item>
+        <item name="myToolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
 
-
+    <style name="MyTheme.LaunchScreen">
+        <item name="android:background">@color/ratp_vert</item>
+    </style>
 
 
     <style name="ratp_vert" parent="Theme.AppCompat.Light.NoActionBar">
@@ -124,4 +132,6 @@
         <item name="colorPrimaryDark">@color/ratp_prairieDark</item>
         <item name="myToolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
     </style>
+
+    <style name="MyTheme"></style>
 </resources>

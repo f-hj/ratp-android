@@ -9,15 +9,6 @@ import java.util.*
 @Table(database = DB::class)
 class Favorite() : BaseModel() {
 
-    constructor(lineType: String, lineCode: String, way: String, stationSlug: String) : this() {
-        this.lineType = lineType
-        this.lineCode = lineCode
-        this.way = way
-        this.stationSlug = stationSlug
-
-        this.id = "$lineType+$lineCode+$way+$stationSlug".toLowerCase()
-    }
-
     @PrimaryKey
     internal var id: String? = null
 
@@ -31,6 +22,15 @@ class Favorite() : BaseModel() {
     internal var way: String? = null
 
     @Column
-    internal var stationSlug: String? = null
+    internal var stationCode: String? = null
+
+    constructor(lineType: String, lineCode: String, way: String, stationCode: String) : this() {
+        this.lineType = lineType
+        this.lineCode = lineCode
+        this.way = way
+        this.stationCode = stationCode
+
+        this.id = "$lineType+$lineCode+$way+$stationCode".toLowerCase()
+    }
 
 }

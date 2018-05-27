@@ -4,23 +4,16 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
-import android.support.v7.app.ActionBar
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.SpinnerAdapter
 import com.github.kittinunf.fuel.httpGet
-import fr.fruitice.trome.feature.Objects.*
-import fr.fruitice.trome.feature.R.layout.activity_line
 import fr.fruitice.trome.features.StationsAdapter
 import kotlinx.android.synthetic.main.activity_line.*
-import kotlinx.android.synthetic.main.activity_station.*
-import android.R.attr.data
-import android.app.PendingIntent.getActivity
-import android.util.TypedValue
+import fr.fruitice.trome.feature.Objects.ratp.*
 
 
 class LineActivity : AppCompatActivity(), StationsAdapter.OnItemClickListener, AdapterView.OnItemSelectedListener {

@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="fr.fruitice.trome.feature.MainActivity">
+    <item
+        android:id="@+id/action_credits"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_info_outline_black_24dp"
+        android:title="@string/title_activity_credits"
+        app:showAsAction="always" />
+</menu>

@@ -1,6 +1,5 @@
-package fr.fruitice.trome.feature.Objects
+package fr.fruitice.trome.feature.Objects.ratp
 
-import android.graphics.Color
 import fr.fruitice.trome.feature.R
 
 data class Line(val id: String, val code: String?, val name: String?, val reseau: Reseau?) {
@@ -39,12 +38,12 @@ data class Line(val id: String, val code: String?, val name: String?, val reseau
     }
 
     fun getComputedCode(): String? {
-        val uCode = code
+        // WTF? I need an explanation for that...
         return when (reseau?.code) {
-            "metro" -> "M$uCode"
-            "rer" -> "R$uCode"
-            "tram" -> "B$uCode" // Gne?
-            else -> uCode
+            "metro" -> "M${code?.toUpperCase()}"
+            "rer" -> "R$code"
+            "tram" -> "B$code" // Gne?
+            else -> code
         }
     }
 

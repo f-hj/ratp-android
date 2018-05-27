@@ -26,19 +26,26 @@ android {
 }
 
 dependencies {
-    api 'com.android.support:appcompat-v7:27.1.1'
-    api 'com.android.support:design:27.1.1'
-    api 'com.android.support.constraint:constraint-layout:1.1.0'
     application project(':app')
     feature project(':feature')
 
+    // APIs connector
     compile 'com.github.kittinunf.fuel:fuel-android:1.12.1'
     compile 'com.google.code.gson:gson:2.8.2'
+
+    // APIs cache
+    compile 'com.github.kittinunf.fuse:fuse:0.2'
+
+    // UI
+    api 'com.android.support:appcompat-v7:27.1.1'
+    api 'com.android.support:design:27.1.1'
+    api 'com.android.support.constraint:constraint-layout:1.1.0'
     compile 'com.github.zhukic:sectioned-recyclerview:1.1.0'
     api 'com.hendraanggrian:collapsingtoolbarlayout-subtitle:27.1.0'
 
-
     // DBFlow
+    annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
+
     kapt "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
 
     compile "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
