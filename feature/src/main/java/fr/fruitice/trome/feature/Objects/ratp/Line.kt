@@ -1,10 +1,28 @@
 package fr.fruitice.trome.feature.Objects.ratp
 
 import fr.fruitice.trome.feature.R
+import android.arch.persistence.room.ColumnInfo
+import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
+import android.util.Log
 
-data class Line(val id: String, val code: String?, val name: String?, val reseau: Reseau?) {
-    constructor(id: String) : this(id, null, null, null)
-    constructor() : this("", null, null, null)
+@Entity(tableName = "lines")
+class Line {
+
+    @PrimaryKey
+    @ColumnInfo(name = "id")
+    internal var id: String? = null
+
+    @ColumnInfo(name = "code")
+    internal var code: String? = null
+
+    @ColumnInfo(name = "name")
+    internal var name: String? = null
+
+    internal var reseau: Reseau? = null
+
+    @ColumnInfo(name = "computed_code")
+    internal var computedCode: String? = null
 
     fun getStyleId(uCode: String): Int {
         return when (uCode) {
@@ -29,6 +47,14 @@ data class Line(val id: String, val code: String?, val name: String?, val reseau
             "RC" -> R.style.ratp_ocre
             "RD" -> R.style.ratp_prairie
             "RE" -> R.style.ratp_fuchsia
+            "BT1" -> R.style.ratp_azur
+            "BT2" -> R.style.ratp_parme
+            "BT3a" -> R.style.ratp_orange
+            "BT3b" -> R.style.ratp_prairie
+            "BT5" -> R.style.ratp_iris
+            "BT6" -> R.style.ratp_coquelicot
+            "BT7" -> R.style.ratp_marron
+            "BT8" -> R.style.ratp_olive
             else -> R.style.ratp_vert
         }
     }
@@ -39,6 +65,10 @@ data class Line(val id: String, val code: String?, val name: String?, val reseau
 
     fun getComputedCode(): String? {
         // WTF? I need an explanation for that...
+        if (this.computedCode != null) {
+            Log.d("line", "code already calculated")
+            return this.computedCode
+        }
         return when (reseau?.code) {
             "metro" -> "M${code?.toUpperCase()}"
             "rer" -> "R$code"

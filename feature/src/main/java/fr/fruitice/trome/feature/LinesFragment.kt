@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.app.Fragment
+import android.arch.persistence.room.Room
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import com.github.kittinunf.fuel.httpGet
 import fr.fruitice.trome.feature.Adapters.LinesAdapter
 import fr.fruitice.trome.feature.Objects.ratp.Line
 import fr.fruitice.trome.feature.Objects.ratp.Lines
+import fr.fruitice.trome.feature.Objects.trome.AppDatabase
 import kotlinx.android.synthetic.main.fragment_lines.view.*
 
 class LinesFragment : Fragment(), LinesAdapter.OnItemClickListener {
@@ -40,7 +42,7 @@ class LinesFragment : Fragment(), LinesAdapter.OnItemClickListener {
         // Creates a vertical Layout Manager
         view.lines_recycler.layoutManager = LinearLayoutManager(context)
 
-        "https://rapt-api.kiwi.fruitice.fr/prettyLines".httpGet().responseObject(Lines.Deserializer()) { _, _, result ->
+        "https://wsiv-api.trome.app/prettyLines".httpGet().responseObject(Lines.Deserializer()) { _, _, result ->
             Log.d("res", "getted")
             Log.d("res", result.toString())
 
@@ -56,6 +58,14 @@ class LinesFragment : Fragment(), LinesAdapter.OnItemClickListener {
             mAdapter!!.onItemClickListener = this
 
             view.lines_recycler.adapter = mAdapter
+
+            val db = Room
+                    .databaseBuilder(context, AppDatabase::class.java, "database-name")
+                    .build()
+
+            for (i in 0..res.getSize()) {
+                db.lineDao().insert(res.getItem(i)!!)
+            }
         }
 
         return view

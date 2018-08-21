@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.MenuItem
 import com.github.kittinunf.fuel.httpGet
-import com.raizlabs.android.dbflow.config.FlowManager
 import fr.fruitice.trome.feature.Objects.ratp.Mission
 import fr.fruitice.trome.feature.Objects.ratp.Schedules
 import kotlinx.android.synthetic.main.activity_station.*
@@ -41,11 +40,9 @@ class StationActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_station)
         setSupportActionBar(toolbar)
-        FlowManager.init(this)
         fab.setOnClickListener { view ->
             Log.d("StationActivity", "lineType: $lineType, lineCode: $lineCode, way: $way, stationId: $stationId")
             val fav = Favorite(lineType!!, lineCode!!, way!!, stationId!!)
-            fav.save()
 
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()

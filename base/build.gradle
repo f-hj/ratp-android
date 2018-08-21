@@ -3,14 +3,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
-def dbflow_version = "4.2.4"
-
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     baseFeature true
     defaultConfig {
         minSdkVersion 23
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 4
         versionName "1.0"
     }
@@ -30,33 +28,23 @@ dependencies {
     feature project(':feature')
 
     // APIs connector
-    compile 'com.github.kittinunf.fuel:fuel-android:1.12.1'
-    compile 'com.google.code.gson:gson:2.8.2'
+    api 'com.github.kittinunf.fuel:fuel-android:1.12.1'
+    api 'com.google.code.gson:gson:2.8.2'
 
     // APIs cache
-    compile 'com.github.kittinunf.fuse:fuse:0.2'
+    api 'com.github.kittinunf.fuse:fuse:0.2'
 
     // UI
-    api 'com.android.support:appcompat-v7:27.1.1'
-    api 'com.android.support:design:27.1.1'
-    api 'com.android.support.constraint:constraint-layout:1.1.0'
-    compile 'com.github.zhukic:sectioned-recyclerview:1.1.0'
+    api 'com.android.support:appcompat-v7:28.0.0-alpha3'
+    api 'com.android.support:design:28.0.0-alpha3'
+    api 'com.android.support.constraint:constraint-layout:1.1.1'
+    api 'com.github.zhukic:sectioned-recyclerview:1.1.0'
     api 'com.hendraanggrian:collapsingtoolbarlayout-subtitle:27.1.0'
 
-    // DBFlow
-    annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
+    // Storage
+    def room_version = "1.1.1-rc1" // or, for latest rc, use "1.1.1-rc1"
 
-    kapt "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
-
-    compile "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
-    compile "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
-
-    // kotlin extensions
-    compile "com.github.Raizlabs.DBFlow:dbflow-kotlinextensions:${dbflow_version}"
-
-    // RXJava 2 support
-    compile "com.github.Raizlabs.DBFlow:dbflow-rx2:${dbflow_version}"
-
-    // RXJava 2 Kotlin Extensions Support
-    compile "com.github.Raizlabs.DBFlow:dbflow-rx2-kotlinextensions:${dbflow_version}"
+    implementation "android.arch.persistence.room:runtime:$room_version"
+    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
+    kapt "android.arch.persistence.room:compiler:$room_version"
 }
