@@ -81,7 +81,7 @@ class LineActivity : AppCompatActivity(), StationsAdapter.OnItemClickListener, A
 
         supportActionBar?.title = lineName
 
-        "https://rapt-api.kiwi.fruitice.fr/lines/$lineCode/directions".httpGet().responseObject(Destinations.Deserializer()) { _, _, result ->
+        "https://ratp-go.dev.fruitice.fr/lines/$lineCode/directions".httpGet().responseObject(Destinations.Deserializer()) { _, _, result ->
             val (res, err) = result
 
             if (err != null) {
@@ -110,8 +110,8 @@ class LineActivity : AppCompatActivity(), StationsAdapter.OnItemClickListener, A
             cmbToolbar.onItemSelectedListener = this
         }
 
-        Log.d("lineActivity", "https://rapt-api.kiwi.fruitice.fr/lines/$lineCode/stations/$currentWay")
-        "https://rapt-api.kiwi.fruitice.fr/lines/$lineCode/stations/$currentWay".httpGet().responseObject(Stations.Deserializer()) { _, _, result ->
+        Log.d("lineActivity", "https://ratp-go.dev.fruitice.fr/lines/$lineCode/stations/way/$currentWay")
+        "https://ratp-go.dev.fruitice.fr/lines/$lineCode/stations/way/$currentWay".httpGet().responseObject(Stations.Deserializer()) { _, _, result ->
             Log.d("res", "getted")
             Log.d("res", result.toString())
 

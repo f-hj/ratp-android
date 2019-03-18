@@ -42,7 +42,7 @@ class LinesFragment : Fragment(), LinesAdapter.OnItemClickListener {
         // Creates a vertical Layout Manager
         view.lines_recycler.layoutManager = LinearLayoutManager(context)
 
-        "https://wsiv-api.trome.app/prettyLines".httpGet().responseObject(Lines.Deserializer()) { _, _, result ->
+        "https://ratp-go.dev.fruitice.fr/prettyLines".httpGet().responseObject(Lines.Deserializer()) { _, _, result ->
             Log.d("res", "getted")
             Log.d("res", result.toString())
 
@@ -63,9 +63,9 @@ class LinesFragment : Fragment(), LinesAdapter.OnItemClickListener {
                     .databaseBuilder(context, AppDatabase::class.java, "database-name")
                     .build()
 
-            for (i in 0..res.getSize()) {
+            /*for (i in 0..res.getSize()) {
                 db.lineDao().insert(res.getItem(i)!!)
-            }
+            }*/
         }
 
         return view

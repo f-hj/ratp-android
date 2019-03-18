@@ -66,8 +66,8 @@ class SearchActivity : AppCompatActivity(), StationsAdapter.OnItemClickListener 
     fun getStations(query: String) {
         if (query.isEmpty()) return
 
-        Log.d("searchUrl", "https://wsiv-api.trome.app/stations/search/$query")
-        "https://wsiv-api.trome.app/stations/search/$query".httpGet().responseObject(Stations.Deserializer()) { _, _, result ->
+        Log.d("searchUrl", "https://ratp-go.dev.fruitice.fr/stations/search/$query")
+        "https://ratp-go.dev.fruitice.fr/stations/search/$query".httpGet().responseObject(Stations.Deserializer()) { _, _, result ->
             Log.d("res", "getted")
             Log.d("res", result.toString())
 

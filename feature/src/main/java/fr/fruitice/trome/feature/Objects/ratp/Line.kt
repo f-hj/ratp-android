@@ -3,6 +3,7 @@ package fr.fruitice.trome.feature.Objects.ratp
 import fr.fruitice.trome.feature.R
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
+import android.arch.persistence.room.Ignore
 import android.arch.persistence.room.PrimaryKey
 import android.util.Log
 
@@ -11,18 +12,40 @@ class Line {
 
     @PrimaryKey
     @ColumnInfo(name = "id")
-    internal var id: String? = null
+    internal var id: String = ""
+    fun getId(): String {
+        return this.id
+    }
+    fun setId(id: String) {
+        this.id = id
+    }
 
     @ColumnInfo(name = "code")
     internal var code: String? = null
+    fun getCode(): String? {
+        return this.code
+    }
+    fun setCode(code: String?) {
+        this.code = code
+    }
 
     @ColumnInfo(name = "name")
     internal var name: String? = null
+    fun getName(): String? {
+        return this.name
+    }
+    fun setName(name: String?) {
+        this.name = name
+    }
 
+    @Ignore
     internal var reseau: Reseau? = null
 
     @ColumnInfo(name = "computed_code")
     internal var computedCode: String? = null
+    fun setComputedCode(computedCode: String?) {
+        this.computedCode = computedCode
+    }
 
     fun getStyleId(uCode: String): Int {
         return when (uCode) {

@@ -58,7 +58,7 @@ class StationActivity : AppCompatActivity() {
         stationAreaId = intent.getStringExtra("stationAreaId")
 
         toolbar_layout.title = intent.getStringExtra("stationName")
-        toolbar_layout.subtitle = intent.getStringExtra("lineName") + " → " + intent.getStringExtra("wayName")
+        //toolbar_layout.subtitle = intent.getStringExtra("lineName") + " → " + intent.getStringExtra("wayName")
 
         srl_station.setOnRefreshListener { -> refresh() }
 
@@ -88,8 +88,8 @@ class StationActivity : AppCompatActivity() {
         done = false
         srl_station.isRefreshing = true
 
-        Log.d("req", "https://rapt-api.kiwi.fruitice.fr/lines/$lineCode/stations/$stationId/$way/next")
-        "https://rapt-api.kiwi.fruitice.fr/lines/$lineCode/stations/$stationId/$way/next".httpGet().responseObject(Schedules.Deserializer()) { _, _, result ->
+        Log.d("req", "https://ratp-go.dev.fruitice.fr/lines/$lineCode/stations/$stationId/way/$way/next")
+        "https://ratp-go.dev.fruitice.fr/lines/$lineCode/stations/$stationId/way/$way/next".httpGet().responseObject(Schedules.Deserializer()) { _, _, result ->
             val (res, err) = result
             if (err != null) {
                 Snackbar.make(activity_station, err.response.responseMessage, Snackbar.LENGTH_LONG).show()
